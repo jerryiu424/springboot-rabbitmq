@@ -1,12 +1,15 @@
 package jerry.iu.springbootrabbitmqfirst;
 
+import jerry.iu.springbootrabbitmqfirst.cloudStreamTest.AcademyCloudStreamBinding;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
+@EnableBinding(AcademyCloudStreamBinding.class)
 @SpringBootApplication
 @EnableScheduling
 public class SpringbootRabbitmqFirstApplication {
@@ -24,9 +27,5 @@ public class SpringbootRabbitmqFirstApplication {
     };
   }
 
-  @Profile("!usage_message")
-  @Bean
-  public CommandLineRunner tutorial() {
-    return new SpringbootRabbitmqFirstRunner();
-  }
+
 }
